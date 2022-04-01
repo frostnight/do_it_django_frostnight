@@ -7,6 +7,14 @@ class TestView(TestCase):
     def setUp(self):
         self.client = Client()
 
+    def navbar_test(self, soup):
+        navbar = soup.nav
+        self.assertIn('Blog', navbar.text)
+        self.assertIn('About me', navbar.text)
+
+        logo_btn = navbar.find('a', text='Do It Django')
+        self.assertEqual(logo_btn.attrs['href'], '/')
+
     def test_post_list(self):
         self.assertEqual(2, 2)
         # 1.1 포스트 목록 페이지(post list)를 연다.
@@ -16,11 +24,8 @@ class TestView(TestCase):
         # 1.3 페이지의 타이틀에 Blog라는 문구가 있다.
         soup = BeautifulSoup(response.content, 'html.parser')
         self.assertIn('Blog', soup.title.text)
-        # 1.4 NavBar가 있다
-        navbar = soup.nav
-        # 1.5 Blog, About me 라는 문구가 Nav Bar에 있다
-        self.assertIn('Blog', navbar.text)
-        self.assertIn('About me', navbar.text)
+
+        self.navbar_test(soup)
 
         # 2.1 게시물이 하나도 없을 때, 메인 영역에는
         self.assertEqual(Post.objects.count(), 0)
@@ -67,9 +72,7 @@ class TestView(TestCase):
 
         soup = BeautifulSoup(response.content, 'html.parser')
         # 2.2 포스트 목록 페이지와 똑같은 네비게이션 바가 있다.
-        navbar = soup.nav
-        self.assertIn('Blog', navbar.text)
-        self.assertIn('About me', navbar.text)
+        self.navbar_test(soup)
         # 2.3 첫 번째 포스트의 제목이 웹 브라우저 탭 타이틀에 들어 있다.
         self.assertIn(post_001.title, soup.title.text)
         # 2.4. 첫 번째 포스트의 제목이 포스트 영역에 있다.
