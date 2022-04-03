@@ -15,6 +15,15 @@ class TestView(TestCase):
         logo_btn = navbar.find('a', text='Do It Django')
         self.assertEqual(logo_btn.attrs['href'], '/')
 
+        home_btn = navbar.find('a', text='Home')
+        self.assertEqual(home_btn.attrs['href'], '/')
+
+        blog_btn = navbar.find('a', text='Blog')
+        self.assertEqual(blog_btn.attrs['href'], '/blog/')
+
+        about_me_btn = navbar.find('a', text='About me')
+        self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
+
     def test_post_list(self):
         self.assertEqual(2, 2)
         # 1.1 포스트 목록 페이지(post list)를 연다.
