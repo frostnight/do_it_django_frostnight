@@ -205,6 +205,6 @@ class TestView(TestCase):
         soup = BeautifulSoup(response.content, 'html.parser')
 
         self.assertEqual("Create Post - Blog", soup.title.text)
-        main_area = soup.find("div", id="main_area")
+        main_area = soup.find("div", id="main-area")
         self.assertIn("Create a New Post", main_area.text)
 
