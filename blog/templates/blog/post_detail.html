@@ -19,11 +19,21 @@
         {% if post.hook_text %}
         <h5 class="text-muted">{{ post.hook_text }}</h5>
         {% endif %}
+
+        <hr/>
+
+        {% if user.is_authenticated and user == post.author %}
+        <a type="button" href="/blog/update_post/{{ post.pk }}/" class="btn btn-info btn-sm float-right">
+            <i class="fas fa-pen"></i>&nbsp;&nbsp;Edit Post
+        </a>
+        {% endif %}
+
         <!-- Post meta content-->
         <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at }} by
             <a href="#">{{ post.author | upper }}</a>
         </div>
     </header>
+    <hr/>
     <!-- Preview image figure-->
     {% if post.head_image %}
     <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="..." /></figure>
