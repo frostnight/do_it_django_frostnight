@@ -43,7 +43,7 @@
     <hr>
     <!-- Post content-->
     <section class="mb-5">
-        <p>{{ post.content }}</p>
+        <p>{{ post.get_content_markdown | safe }}</p>
     </section>
     <section class="mb-2">
         {% if post.tags.exists %}
