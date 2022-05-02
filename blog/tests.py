@@ -268,7 +268,7 @@ class TestView(TestCase):
 
         tag_str_input = main_area.find('input', id='id_tags_str')
         self.assertTrue(tag_str_input)
-        self.assertIn('파이썬 공부; python', tag_str_input.attrs['value'])
+        self.assertIn('파이썬 공부;python', tag_str_input.attrs['value'])
 
         response = self.client.post(
             update_post_url,
@@ -289,4 +289,4 @@ class TestView(TestCase):
         self.assertIn('파이썬 공부', main_area.text)
         self.assertIn('한글 태그', main_area.text)
         self.assertIn('some tag', main_area.text)
-        self.assertIn('python', main_area.text)
+        self.assertNotIn('python', main_area.text)
