@@ -1,3 +1,15 @@
 body {
     padding-top: 56px;
 }
+
+.ms-3 {
+    margin-left: 1rem !important;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
