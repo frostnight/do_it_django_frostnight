@@ -228,7 +228,33 @@ class TestView(TestCase):
         self.assertIn('obama', new_commnet_div.text)
         self.assertIn('오바마의 댓글입니다', new_commnet_div.text)
 
+    def test_comment_update(self):
+        comment_by_trump = Comment.objects.create(
+            post=self.post_001,
+            author=self.user_trump,
+            content='트럼프의 댓글입니다.'
+        )
+        response = self.client.get(self.post_001.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
 
+        comment_area = soup.find('section', id='comment-area')
+        self.assertFalse(comment_area.find('a', id='comment-1-update-btn'))
+        self.assertFalse(comment_area.find('a', id='comment-2-update-btn'))
+
+        # obama login
+        self.client.login(username='obama', password='somepassword')
+        response = self.client.get(self.post_001.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        comment_area = soup.find('section', id='comment-area')
+        self.assertTrue(comment_area.find('a', id='comment-1-update-btn'))
+        self.assertFalse(comment_area.find('a', id='comment-2-update-btn'))
+
+        comment_001_update_btn = comment_area.find('a', id='comment-1-update-btn')
+        self.assertIn('edit', comment_001_update_btn.text)
+        self.assertEqual(comment_001_update_btn.attrs['href'], '/blog/update_comment/1/')
 
     def test_category_page(self):
         response = self.client.get(self.category_programming.get_absolute_url())
