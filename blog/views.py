@@ -5,7 +5,7 @@ from django.utils.text import slugify
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from blog.forms import CommentForm
-from blog.models import Post, Category, Tag
+from blog.models import Post, Category, Tag, Comment
 
 
 class PostList(ListView):
@@ -153,3 +153,14 @@ def new_comment(request, pk):
         return redirect(post.get_absolute_url())
     else:
         raise PermissionError
+
+
+class CommentUpdate(LoginRequiredMixin, UpdateView):
+    model = Comment
+    form_class = CommentForm
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user == self.get_object().author:
+            return super(PostUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
