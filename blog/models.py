@@ -4,7 +4,7 @@ import os
 
 from markdownx.utils import markdown
 from markdownx.models import MarkdownxField
-
+from datetime import timedelta
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -74,3 +74,6 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return f'{self.post.get_absolute_url()}#comment-{self.pk}'
+
+    def is_updated(self):
+        return self.updated_at - self.created_at > timedelta(seconds=1)

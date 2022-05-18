@@ -1,3 +1,5 @@
+from time import sleep
+
 from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from bs4 import BeautifulSoup
@@ -264,7 +266,7 @@ class TestView(TestCase):
         update_comment_form = soup.find('form', id='comment-form')
         content_textarea = update_comment_form.find('textarea', id='id_content')
         self.assertIn(self.comment_001.content, content_textarea.text)
-
+        sleep(2)
         response = self.client.post(
             '/blog/update_comment/1/',
             {
@@ -275,7 +277,7 @@ class TestView(TestCase):
 
         self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content, 'html.parser')
-        comment_001_div = soup.find('div', 'comment-1')
+        comment_001_div = soup.find('div', id='comment-1')
         self.assertIn('오바마의 댓글을 수정합니다.', comment_001_div.text)
         self.assertIn('Updated: ', comment_001_div.text)
 

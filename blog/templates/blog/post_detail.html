@@ -104,6 +104,9 @@
                 {% endif %}
                 <div class="fw-bold">{{ comment.author.username }} &nbsp; &nbsp;<small class="text-muted">{{ comment.created_at }}</small></div>
                 {{ comment.content | linebreaks }}
+                {% if comment.is_updated %}
+                <p class="text-muted float-right">Updated: {{ comment.updated_at }}</p>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
