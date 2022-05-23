@@ -13,3 +13,15 @@ body {
 .mb-4 {
     margin-bottom: 1.5rem !important;
 }
+
+.media {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.media-body {
+  -ms-flex: 1;
+  flex: 1;
+}
