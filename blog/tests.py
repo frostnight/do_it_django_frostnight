@@ -312,6 +312,16 @@ class TestView(TestCase):
 
         comment_002_delete_modal_btn = comment_area.find('a', id='comment-2-delete-btn')
         self.assertIn('delete', comment_002_delete_modal_btn.text)
+        self.assertEqual(
+            comment_002_delete_modal_btn.attrs['data-target'],
+            '#deleteCommentModal-2'
+        )
+
+        delete_comment_modal_002 = soup.find('div', id='deleteCommentModal-2')
+        self.assertIn('Are You Sure?', delete_comment_modal_002.text)
+        really_delete_btn_002 = delete_comment_modal_002.find('a')
+        self.assertIn('Delete', really_delete_btn_002.text)
+        self.assertEqual(really_delete_btn_002.attrs['href'], '/blog/delete_comment/2/')
 
     def test_category_page(self):
         response = self.client.get(self.category_programming.get_absolute_url())
