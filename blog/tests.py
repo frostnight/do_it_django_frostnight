@@ -323,6 +323,12 @@ class TestView(TestCase):
         self.assertIn('Delete', really_delete_btn_002.text)
         self.assertEqual(really_delete_btn_002.attrs['href'], '/blog/delete_comment/2/')
 
+        response = self.client.get('/blog/delete_comment/2/', follow=True)
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        comment_area = soup.find('section', id='comment-area')
+
     def test_category_page(self):
         response = self.client.get(self.category_programming.get_absolute_url())
         self.assertEqual(response.status_code, 200)

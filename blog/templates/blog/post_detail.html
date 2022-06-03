@@ -100,12 +100,14 @@
                     <img class="d-flex mr-3 rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                 <div class="media-body">
                     {% if user.is_authenticated and comment.author == user %}
-                        <a class="btn btn-sm btn-danger float-right"
-                           role="button" id="comment-{{ comment.pk }}-delete-btn"
-                           href="#" data-toggle="modal" data-target="#deleteCommentModal-{{ comment.pk }}">delete</a>
-                        <a class="btn btn-sm btn-info float-right" role="button" id="comment-{{ comment.pk }}-update-btn"
-                            href="/blog/update_comment/{{ comment.pk }}/">edit</a>
+                        <div class="float-right">
+                            <a class="btn btn-sm btn-info" role="button" id="comment-{{ comment.pk }}-update-btn"
+                                href="/blog/update_comment/{{ comment.pk }}/">edit</a>
 
+                            <a class="btn btn-sm btn-danger"
+                               role="button" id="comment-{{ comment.pk }}-delete-btn"
+                               href="#" data-toggle="modal" data-target="#deleteCommentModal-{{ comment.pk }}">delete</a>
+                        </div>
                         <!-- Modal {{ comment.pk }} -->
                         <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1"
                              aria-labelledby="deleteCommentModal-{{ comment.pk }}-ModalLabel" aria-hidden="true">
@@ -120,7 +122,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        sadas
+                                        <del>{{ comment | linebreaks }}</del>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
