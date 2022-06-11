@@ -327,7 +327,12 @@ class TestView(TestCase):
         self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content, 'html.parser')
 
+        self.assertIn(self.post_001.title, soup.title.text)
         comment_area = soup.find('section', id='comment-area')
+        self.assertNotIn('트럼프의 댓글입니다.', comment_area.text)
+
+        self.assertEqual(Comment.objects.count(), 1)
+        self.assertEqual(self.post_001.comment_set.count(), 1)
 
     def test_category_page(self):
         response = self.client.get(self.category_programming.get_absolute_url())
