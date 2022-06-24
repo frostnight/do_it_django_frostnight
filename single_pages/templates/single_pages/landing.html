@@ -21,21 +21,13 @@
                 </div>
                 <div class="col-lg-5">
                     <h2>Blog - Recent posts</h2>
+                    {% for post in recent_posts %}
                     <div class="card mt-1">
                         <div class="card-body">
-                            가장 최근 포스트 내용
+                            <h6>{{ post.title }}</h6>
                         </div>
                     </div>
-                    <div class="card mt-1">
-                        <div class="card-body">
-                            2번째 포스트 내용
-                        </div>
-                    </div>
-                    <div class="card mt-1">
-                        <div class="card-body">
-                            3번째 포스트 내용
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
