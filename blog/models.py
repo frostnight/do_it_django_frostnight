@@ -61,6 +61,11 @@ class Post(models.Model):
     def get_content_markdown(self):
         return markdown(self.content)
 
+    def get_avatar_url(self):
+        if self.author.socialaccount_set.exists():
+            return self.author.socialaccount_set.first().get_avatar_url()
+        else:
+            return "https://dummyimage.com/50x50/ced4da/6c757d.jpg"
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -79,7 +84,6 @@ class Comment(models.Model):
         return self.updated_at - self.created_at > timedelta(seconds=1)
 
     def get_avatar_url(self):
-        print("aaa")
         if self.author.socialaccount_set.exists():
             return self.author.socialaccount_set.first().get_avatar_url()
         else:
