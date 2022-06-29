@@ -1,18 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>About me</title>
+    <title>About FrostNight</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5e0c4501ba.js" crossorigin="anonymous"></script>
+    <link href="{% static 'single_pages/css/about_me.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <nav>
-        <a href="/blog/">Blog</a>
-        <a HREF="/about_me/">About me</a>
-    </nav>
+    {% include 'blog/navbar.html' %}
 
-    <h1>안녕하세요. FrostNight입니다.</h1>
-    <h2>이력</h2>
-    <h2>Portfolio</h2>
-    <h3>개발 중입니다.</h3>
+    <section>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1>안녕하세요 FrostNight입니다.</h1>
+                    <br/>
+                    <p>
+                        피아노와 컴퓨터와 스노우보드를 좋아합니다.
+                        <br/>
+                        데이터 분석 및 머신러닝을 배우고 싶습니다.
+                    </p>
+                    <br/>
+                    <p>
+                        롤토체스 / 월드오브워크래프트를 하고 있습니다.
+                    </p>
+                    <ul>
+                        <li>WORK EXPERIENCE</li>
+                        <ul>
+                            <li> R회사 - 빅데이터 솔루션 개발( 2015.02 ~ 2021.04 )</li>
+                            <li> E회사 - DA 광고 검색 솔루션 및 빅데이터 솔루션 개발( 2021.07 ~ ing )</li>
+                        </ul>
+                        <li>EDUCATION</li>
+                        <ul>
+                            <li> S 고등학교 2006.03 ~ 2009.02 </li>
+                            <li> D 대학교 2009.03 ~ 2015.02 </li>
+                        </ul>
+                        <li>CERTIFICATION</li>
+                        <ul>
+                            <li>정보처리기사</li>
+                            <li>리눅스마스터2급</li>
+                            <li>TOEIC 700s</li>
+                            <li>SQLD</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-fluid" src="{% static 'single_pages/images/winter.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light margin-for-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>PORTFOLIO</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#coffee">
+                        <img class="card-img-top" src="{% static 'single_pages/images/coffee.jpg' %}">
+                        <div class="card-body">
+                            <h5 class="card-title">Coffee</h5>
+                            <p>모닝 커피 한잔 어떤 가요?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#office">
+                        <img class="card-img-top" src="{% static 'single_pages/images/office.jpg' %}">
+                        <div class="card-body">
+                            <h5 class="card-title">Office</h5>
+                            <p>화사한 사무실 분위기 어떤 가요?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#pizza">
+                        <img class="card-img-top" src="{% static 'single_pages/images/pizza.jpg' %}">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza</h5>
+                            <p>피자가 먹고 싶은 날입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="coffee" tabindex="-1" aria-labelledby="coffeeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="coffeeModalLabel">Coffee</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-7">
+                    <img class="img-fluid" src="{% static 'single_pages/images/coffee.jpg' %}">
+                </div>
+                <div class="col-lg-5">
+                    <p>모닝 커피 한잔 어떤 가요?</p>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="office" tabindex="-1" aria-labelledby="officeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="officeModalLabel">Office</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-7">
+                    <img class="img-fluid" src="{% static 'single_pages/images/office.jpg' %}">
+                </div>
+                <div class="col-lg-5">
+                    <p>화사한 사무실 분위기 어떤 가요?</p>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="pizza" tabindex="-1" aria-labelledby="pizzaModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pizzaModalLabel">Pizza</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-7">
+                    <img class="img-fluid" src="{% static 'single_pages/images/pizza.jpg' %}">
+                </div>
+                <div class="col-lg-5">
+                    <p>피자가 먹고 싶은 날입니다.</p>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fixed-bottom">
+    {% include 'blog/footer.html' %}
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 </html>
