@@ -133,3 +133,5 @@ migrations/
 _media/
 
 secrets.json
+.env.prod
+.env.prod.db
