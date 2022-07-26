@@ -23,5 +23,12 @@
   </tbody>
 </table>
 
+<hr/>
+
+{% if request.user.is_authenticated %}
+  <a href="/board/create/" type="button" class="btn btn-secondary float-right">글쓰기</a>
+{% else %}
+  <a type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#loginModal">글쓰기</a>
+{% endif %}
 
 {% endblock %}
