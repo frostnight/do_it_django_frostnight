@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'blog',
     'crispy_forms',
     'markdownx',
+    'django_summernote',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -177,3 +178,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 LOGIN_REDIRECT_URL = '/blog/'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
