@@ -180,3 +180,14 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 LOGIN_REDIRECT_URL = '/blog/'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        # Change editor size
+        'width': '100%',
+        'height': '480',
+     }
+
+}
